@@ -19,6 +19,7 @@ public class CTRL_Soul : MonoBehaviour
     [Header("This are the variables that help this character destroy the other souls.")]
     [SerializeField] protected string _enemiesTag;
     [SerializeField] protected float _timeBeforeDestruction;
+    [SerializeField] protected float _touchingEnemySpeed;
 
     //The protected variables needed for the movement implementation for this character.
     protected Rigidbody rb;
@@ -30,7 +31,8 @@ public class CTRL_Soul : MonoBehaviour
     [SerializeField] protected float _timerEnemy = 2;
     //A reference to keep the last enemy that came in contact with this player.
     protected GameObject _enemy;
-
+    //A reference to the enemy AI so we can control it.
+    protected AI_Enemy_Souls _enemyAI;
 
     void Start()
     {
@@ -44,6 +46,10 @@ public class CTRL_Soul : MonoBehaviour
         //If the player press down the w key. Then we speed up
         if (Input.GetKey(KeyCode.W))
         {
+            if (_collidingWithEnemy)
+            {
+                DetachFromEnemy();
+            }
             //While the player is pressing the W key, this character should go faster and faster until it reaches max speed.
             if (realSpeed < speed + topSpeedIncrement)
             {
@@ -59,6 +65,24 @@ public class CTRL_Soul : MonoBehaviour
             }
         }
 
+        //If the player press down the w key. Then we speed up
+        if (Input.GetKey(KeyCode.S))
+        {
+            //While the player is pressing the W key, this character should go faster and faster until it reaches max speed.
+            if (realSpeed > speed - topSpeedIncrement)
+            {
+                realSpeed -= Time.deltaTime * speedIncrementMultiplier;
+            }
+        }
+        else
+        {
+            //While the player is not pressing the the W key, this character should go faster and faster until it reaches max speed.
+            if (realSpeed < speed)
+            {
+                realSpeed += Time.deltaTime * speedIncrementMultiplier;
+            }
+        }
+
         //Now we take care of the rotation if the player press A or D
         if (Input.GetKey(KeyCode.D))
         {
@@ -68,15 +92,15 @@ public class CTRL_Soul : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             RotateLeft();
-        }    
+        }
         
         //Now just in case we clamp the speed
-        realSpeed = Mathf.Clamp(realSpeed, speed, speed + topSpeedIncrement);
+        realSpeed = Mathf.Clamp(realSpeed, speed - topSpeedIncrement, speed + topSpeedIncrement);
 
         //If the player is colliding with an enemy, then the speed should be 0 and then 
         if (_collidingWithEnemy)
         {
-            realSpeed = 0;
+            realSpeed = _touchingEnemySpeed;
 
             if(_timerEnemy > 0)
             {
@@ -89,7 +113,7 @@ public class CTRL_Soul : MonoBehaviour
                     Destroy(_enemy);
                 }
 
-                _collidingWithEnemy = false;            
+                DetachFromEnemy();
             }
 
         }
@@ -121,22 +145,56 @@ public class CTRL_Soul : MonoBehaviour
     #region This region is the one we'll be using for this character attacks
     //We need to detect collisions with the other souls.
     protected void OnTriggerEnter(Collider other)
-    {
+    {    //If the other enemy is tagged as the soul enemy tags assigned in the inspector.
         if (other.tag == _enemiesTag)
         {
-            _collidingWithEnemy = true;
-            _enemy = other.gameObject;
-            _timerEnemy = _timeBeforeDestruction;
+            //If we're not already colliding with 
+            if (_collidingWithEnemy)
+            {
+                return;
+            }
+            //We then attach to the enemy.
+            AttachEnemy(other.gameObject);
         }
     }
 
-    //Not sure if this is something that is usefull.
-    protected void OnTriggerExit(Collider other)
+    protected void AttachEnemy(GameObject enemy)
     {
-        if (other.tag == _enemiesTag)
+        //First we set the boolena to true so this character reacts apropiatelly
+        _collidingWithEnemy = true;
+        //Now we assign the game object and the ai to the variables we use to store which enemy is being killed so far.
+        _enemy = enemy;
+        _enemyAI = _enemy.GetComponent<AI_Enemy_Souls>();
+        if (_enemyAI != null)
         {
-            _collidingWithEnemy = false;
+            _enemyAI.AttachToSoulPlayer();
         }
+        //Now we tell the AI that it's being killed.
+        _enemyAI.beingKilled = true;
+        //We attached the enemy to this transform so it moves with us.
+        _enemy.transform.SetParent(this.gameObject.transform);
+
+        //We set the time that we must hold to it before killing it.
+        _timerEnemy = _timeBeforeDestruction;
+    }
+
+    protected void DetachFromEnemy()
+    {
+        //If we're not colliding with the enemy. We exit.
+        if (!_collidingWithEnemy)
+        {
+            return;
+        }
+
+        //If the enemy hasn't been destroyed yet we release him from our control. This might happen if the player has voluntarily detached from the player instead of 
+        if (_enemy != null)
+        {
+            _enemyAI.DetachFromSoulPlayer();
+            _enemyAI.beingKilled = false;
+            _enemy.transform.SetParent(null);
+        }
+
+        _collidingWithEnemy = false;
     }
     #endregion
 }

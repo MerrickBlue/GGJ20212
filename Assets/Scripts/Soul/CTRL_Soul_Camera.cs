@@ -37,6 +37,6 @@ public class CTRL_Soul_Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.transform.position = new Vector3(_playerTransform.position.x, yPosition, _playerTransform.position.z);
     }
 }
