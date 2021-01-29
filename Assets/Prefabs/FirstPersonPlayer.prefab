@@ -170,7 +170,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 70
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -431,8 +431,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   rocks: {fileID: 2788600697604693638, guid: 4edeb1dce4b8d3f439132d869fd66c81, type: 3}
-  shotForce: 247
+  shotForce: {x: 0, y: 5, z: 20}
   shotPoint: {fileID: 5778945219342383613}
+  rockCount: 10
 --- !u!1001 &5792546251438003151
 PrefabInstance:
   m_ObjectHideFlags: 0
