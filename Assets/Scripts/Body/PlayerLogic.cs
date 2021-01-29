@@ -17,12 +17,14 @@ public class PlayerLogic : MonoBehaviour
 
     [Header("Projectile Settings")]
     public GameObject rocks;
-    public float shotForce = 10f;
+    public Vector3 shotForce;
     public Transform shotPoint;
 
     private Vector3 velocity;
     private bool isGrounded;
-    private int rockCount = 10;
+    //The ammo counter for this player.
+    [SerializeField] private int rockCount = 10;
+    //Not sure why this is usefull?
     private Rigidbody rockRB;
 
     // Update is called once per frame
@@ -105,7 +107,7 @@ public class PlayerLogic : MonoBehaviour
 
                 //Take the rigid body of the temporal instance var and add a shot force to it in the forward game object axis
                 rockRB = tempBullet_Handler.GetComponent<Rigidbody>();
-                rockRB.AddForce(transform.forward * shotForce);
+                rockRB.AddForce(shotForce);
 
                 //Substract a rock for each time we shoot
                 rockCount -= 1;
