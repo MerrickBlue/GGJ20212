@@ -39,8 +39,10 @@ public class PlayerLogic : MonoBehaviour
         float xAxis = Input.GetAxis("Horizontal");
         float zAxis = Input.GetAxis("Vertical");
 
+        //Get the correct direction to move to
         Vector3 direction = transform.right * xAxis + transform.forward * zAxis;
-
+        
+        //Move the player game object * speed and delta time
         controller.Move(direction * speed * Time.deltaTime);
 
         Jump();
