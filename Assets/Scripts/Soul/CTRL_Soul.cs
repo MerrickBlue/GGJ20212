@@ -125,28 +125,27 @@ public class CTRL_Soul : MonoBehaviour
     #region This region holds the function that make the soul move and rotate
     protected void Move()
     {
-        rb.velocity = transform.up * realSpeed;
+        rb.velocity = transform.forward * realSpeed;
     }
 
     protected void RotateLeft()
     {
-        transform.Rotate(Vector3.forward * Time.deltaTime * rotSpeed);
+        transform.Rotate(Vector3.down * Time.deltaTime * rotSpeed);
     }
 
     protected void RotateRight()
     {
-        transform.Rotate(Vector3.forward * -Time.deltaTime * rotSpeed);
+        transform.Rotate(Vector3.up * Time.deltaTime * rotSpeed);
     }
 
     #endregion
 
-
-
     #region This region is the one we'll be using for this character attacks
     //We need to detect collisions with the other souls.
-    protected void OnTriggerEnter(Collider other)
-    {    //If the other enemy is tagged as the soul enemy tags assigned in the inspector.
-        if (other.tag == _enemiesTag)
+    protected void OnCollisionEnter(Collision collision)
+    {       
+        //If the other enemy is tagged as the soul enemy tags assigned in the inspector.
+        if (collision.gameObject.tag == _enemiesTag)
         {
             //If we're not already colliding with 
             if (_collidingWithEnemy)
@@ -154,7 +153,7 @@ public class CTRL_Soul : MonoBehaviour
                 return;
             }
             //We then attach to the enemy.
-            AttachEnemy(other.gameObject);
+            AttachEnemy(collision.gameObject);
         }
     }
 
@@ -173,7 +172,7 @@ public class CTRL_Soul : MonoBehaviour
         _enemyAI.beingKilled = true;
         //We attached the enemy to this transform so it moves with us.
         _enemy.transform.SetParent(this.gameObject.transform);
-
+        _enemy.GetComponent<Rigidbody>().isKinematic = false;
         //We set the time that we must hold to it before killing it.
         _timerEnemy = _timeBeforeDestruction;
     }
@@ -192,6 +191,7 @@ public class CTRL_Soul : MonoBehaviour
             _enemyAI.DetachFromSoulPlayer();
             _enemyAI.beingKilled = false;
             _enemy.transform.SetParent(null);
+            _enemy.GetComponent<Rigidbody>().isKinematic = false;
         }
 
         _collidingWithEnemy = false;

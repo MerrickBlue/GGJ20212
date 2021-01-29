@@ -143,7 +143,7 @@ public class AI_Enemy_Souls : MonoBehaviour
     //This function should define a Vector towards where this character shall move.
     protected Vector3 DefinePatrolTarget()
     {     
-        var v2 = Random.insideUnitCircle.normalized * Random.Range(5, 10);
+        var v2 = (Random.insideUnitCircle.normalized * Random.Range(5, 10) + new Vector2 (this.transform.position.x, this.transform.position.z));
 
         Vector3 ret = new Vector3 (v2.x, this.transform.position.y, v2.y);
 
