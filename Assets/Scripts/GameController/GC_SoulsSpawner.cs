@@ -24,8 +24,14 @@ public class GC_SoulsSpawner : MonoBehaviour
     //This should actually be the body/FPS player
     public PlayerLogic bodyPlayer;
 
-    //This variable can be used by the HUD controller in order to display how far away the players are from each other.
-    [HideInInspector] public float distanceBetweenPlayers;
+    //This variable can be used by the HUD controller in order to display how far away the players are from each other. Also it tells this class to enter the second stage of the game.
+    [HideInInspector] public float distanceBetweenPlayers = 4;
+    [SerializeField] protected float firstStageDistance;
+    public bool _secondStage;
+
+    //This is the object where the two players must enter in order to really WIN the game.
+    [SerializeField] protected GameObject _finalGoal1;
+    [SerializeField] protected GameObject _finalGoal2;
 
     protected void Awake()
     {
@@ -61,13 +67,26 @@ public class GC_SoulsSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //This function is only useful for the first stage so both players can meet with each other. So if we're already in the second stage we exit.
+        if(_secondStage)
+        {
+            return;
+        }
+        
+        //This function calculates the relative position between players, without counting with the height of the soulplayer.
         CalculateDistanceBetweenPlayers();
+        //If the distance between the players is reached be enter second Stage.
+        if (distanceBetweenPlayers < firstStageDistance)
+        {
+            EnterSecondStage();
+        }
     }
 
     //Every frame we calculate the distance between players to pass it on to the HUD.
     protected void CalculateDistanceBetweenPlayers()
     {
-        distanceBetweenPlayers = Vector3.Distance(soulPlayer.transform.position, bodyPlayer.transform.position);
+        var soulGroundPosition = new Vector3(soulPlayer.transform.position.x, bodyPlayer.transform.position.y, soulPlayer.transform.position.z);
+        distanceBetweenPlayers = Vector3.Distance(soulGroundPosition, bodyPlayer.transform.position);
     }
 
     #region Inside this reagion I'm containing the logic to spawn enemies close to both players.
@@ -166,5 +185,26 @@ public class GC_SoulsSpawner : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }    
+
+    public void WinGame()
+    {
+        Debug.Log("Game Won");
+    }
+
+    protected void EnterSecondStage()
+    {
+        //First we ste the second stage boollean to true.
+        _secondStage = true;
+
+        //Now we activate one of the two random final goals
+        if (Random.value > 0.5f)
+        {
+            _finalGoal1.SetActive(true);
+        }
+        else
+        {
+            _finalGoal2.SetActive(true);
+        }
+    }
     #endregion
 }
