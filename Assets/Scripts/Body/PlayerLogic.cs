@@ -72,10 +72,12 @@ public class PlayerLogic : MonoBehaviour
     //Pickup Rock Trigger
     private void OnTriggerEnter(Collider other)
     {
+        //We collide with the rock pickup prefab and collect it if it has the Rock tag
         if (other.gameObject.CompareTag("Rock"))
         {
+            //Add a rock to the rock counter
             RockCollector();
-            Debug.Log(rockCount);
+
             //Destroy parent gameObject when we touch the child trigger
             Destroy(other.transform.parent.gameObject);
         }
@@ -83,6 +85,7 @@ public class PlayerLogic : MonoBehaviour
 
     void RockCollector()
     {
+        //Add one rock to the rock counter of we have 0 or more rocks
         if (rockCount >= 0)
         {
             rockCount += 1;
@@ -91,16 +94,20 @@ public class PlayerLogic : MonoBehaviour
 
     void RockShooter()
     {
+        //If we have a at least one rock we can shoot
         if (rockCount > 0)
         {
             if (Input.GetButtonDown("Fire1"))
             {
-                //rocks.GetComponent<BoxCollider>().enabled = false;
+                //Instantiate a bullet rock prefab we define in editor inspector and save the instance in a temp variable
                 GameObject tempBullet_Handler;
                 tempBullet_Handler = Instantiate(rocks, shotPoint.position, Quaternion.identity);
 
+                //Take the rigid body of the temporal instance var and add a shot force to it in the forward game object axis
                 rockRB = tempBullet_Handler.GetComponent<Rigidbody>();
                 rockRB.AddForce(transform.forward * shotForce);
+
+                //Substract a rock for each time we shoot
                 rockCount -= 1;
             }
         }
