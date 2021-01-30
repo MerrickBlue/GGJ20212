@@ -29,6 +29,13 @@ public class CTRL_Soul : MonoBehaviour
     [SerializeField] protected bool _collidingWithEnemy;
     //Just a timer to calculate how much time is left needed before destroying the enemy we're touching. After testing we can erase the serialization.
     [SerializeField] protected float _timerEnemy = 2;
+
+    //Audio
+    public AudioClip[] EvilSoulAttachSFX;
+    public AudioClip[] EvilSoulDiesSFX;
+    public AudioClip[] SoulAccelSFX;
+    public AudioSource SoulASource;
+
     //A reference to keep the last enemy that came in contact with this player.
     protected GameObject _enemy;
     //A reference to the enemy AI so we can control it.
@@ -161,6 +168,8 @@ public class CTRL_Soul : MonoBehaviour
     {
         //First we set the boolena to true so this character reacts apropiatelly
         _collidingWithEnemy = true;
+        //Audio
+        AudioManager.AudioManag.PlaySFX(SoulASource, EvilSoulAttachSFX, 0.8f, 1.2f, 0.9f, 1f, false);
         //Now we assign the game object and the ai to the variables we use to store which enemy is being killed so far.
         _enemy = enemy;
         _enemyAI = _enemy.GetComponent<AI_Enemy_Souls>();
@@ -182,6 +191,8 @@ public class CTRL_Soul : MonoBehaviour
         //If we're not colliding with the enemy. We exit.
         if (!_collidingWithEnemy)
         {
+            //Audio
+            AudioManager.AudioManag.PlaySFX(SoulASource, EvilSoulDiesSFX, 0.8f, 1.2f, 1f, 1f, false);
             return;
         }
 
@@ -189,6 +200,8 @@ public class CTRL_Soul : MonoBehaviour
         if (_enemy != null)
         {
             _enemyAI.DetachFromSoulPlayer();
+            //Audio
+            AudioManager.AudioManag.PlaySFX(SoulASource, SoulAccelSFX, 0.8f, 1.2f, 1f, 1f, false);
             _enemyAI.beingKilled = false;
             _enemy.transform.SetParent(null);
             _enemy.GetComponent<Rigidbody>().isKinematic = false;
