@@ -30,6 +30,12 @@ public class AI_Enemy_Souls : MonoBehaviour
 
     //A boolean to when the enemy sees the player he can "Kill" and react appropietly.
     [SerializeField] protected bool killablePlayerOnSight;
+
+    //This is how far the player must be for this character to give up on pursuing it.
+    [SerializeField] protected float giveUpDistance = 10;
+    //After giving up on a chase, we use the following variables to give this character a small cooldown. This way it's safer for the player to escape.
+    protected bool cooldown;
+    protected float cooldownTimer = 0;
     protected Transform FPSPlayer;
 
     //The real movement when attacking and patrolling, that way the character doesn't go to full speed in a frame.
@@ -79,6 +85,25 @@ public class AI_Enemy_Souls : MonoBehaviour
             movingSpeed = 0;
             return;
         }
+
+        #region this section holds the cooldown for when this character has been chasing the player it can kill and can now 
+        if (cooldown)
+        {
+            //The cooldown  time was set below at the end of the update function as it's when this character calculates if the player's gone too far away.
+            if(cooldownTimer > 0)
+            {
+                cooldownTimer -= Time.deltaTime;
+            }
+            else
+            {
+                cooldown = false;
+            }
+
+            //Since we're on cooldown we exit this function.
+            return;
+        }
+        #endregion
+
         //If there's no killable player on sight we check for it and we patrol around.
         if (!killablePlayerOnSight)
         {
@@ -114,6 +139,25 @@ public class AI_Enemy_Souls : MonoBehaviour
         else
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(FPSPlayer.position.x, this.transform.position.y, FPSPlayer.position.z), maxAttackSpeed * Time.deltaTime);
+
+            //Since we are chasing the FPS player at this moment, there should always be a player assigned as a variable, but still it doesn't hurt to check again.
+            if (FPSPlayer != null)
+            {
+                //We create a point as if this character were grounded so we could meassure the distance between that point and the player.
+                Vector3 _groundPosition = new Vector3(this.transform.position.x, FPSPlayer.position.y, this.transform.position.z);
+                var distanceFromTarget = Vector3.Distance(_groundPosition, FPSPlayer.position);
+                //If the player has gone farther away from this character than the give up distance set via the inspector, then this class shoudl give up.
+                if (distanceFromTarget >= giveUpDistance)
+                {
+                    //First we set the player on sight boollean to false.
+                    killablePlayerOnSight = false;
+                    //We start a cooldown.
+                    cooldownTimer = 4;
+                    cooldown = true;
+                    //Just in case we also tell this character to forget about the player
+                    FPSPlayer = null;
+                }
+            }
         }
     }
 

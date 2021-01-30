@@ -23,6 +23,11 @@ public class AI_Enemy_Body : MonoBehaviour
 
     [SerializeField] protected bool killableSoulPlayerOnSight;
 
+    //This is how far the player must be for this character to give up on pursuing it.
+    [SerializeField] protected float giveUpDistance = 10;
+    //After giving up on a chase, we use the following variables to give this character a small cooldown. This way it's safer for the player to escape.
+    protected bool cooldown;
+    protected float cooldownTimer = 0;
     //Player transform reference
     protected Transform SoulPlayer;
 
@@ -64,6 +69,24 @@ public class AI_Enemy_Body : MonoBehaviour
 
     private void Update()
     {
+        #region this section holds the cooldown for when this character has been chasing the player it can kill and can now 
+        if (cooldown)
+        {
+            //The cooldown  time was set below at the end of the update function as it's when this character calculates if the player's gone too far away.
+            if (cooldownTimer > 0)
+            {
+                cooldownTimer -= Time.deltaTime;
+            }
+            else
+            {
+                cooldown = false;
+            }
+
+            //Since we're on cooldown we exit this function.
+            return;
+        }
+        #endregion
+
         BodyAI_Sight();
     }
 
@@ -99,6 +122,26 @@ public class AI_Enemy_Body : MonoBehaviour
         else
         {
             this.transform.position = Vector3.MoveTowards(this.transform.position, new Vector3(SoulPlayer.position.x, this.transform.position.y, SoulPlayer.position.z), maxAttackSpeed * Time.deltaTime);
+
+
+            //Since we are chasing the FPS player at this moment, there should always be a player assigned as a variable, but still it doesn't hurt to check again.
+            if (SoulPlayer != null)
+            {
+                //We create a point as if this character were flying so we could meassure the distance between that point and the player.
+                Vector3 _aerealPosition = new Vector3(this.transform.position.x, SoulPlayer.position.y, this.transform.position.z);
+                var distanceFromTarget = Vector3.Distance(_aerealPosition, SoulPlayer.position);
+                //If the player has gone farther away from this character than the give up distance set via the inspector, then this class shoudl give up.
+                if (distanceFromTarget >= giveUpDistance)
+                {
+                    //First we set the player on sight boollean to false.
+                    killableSoulPlayerOnSight = false;
+                    //We start a cooldown.
+                    cooldownTimer = 4;
+                    cooldown = true;
+                    //Just in case we also tell this character to forget about the player
+                    SoulPlayer = null;
+                }
+            }
         }
     }
 

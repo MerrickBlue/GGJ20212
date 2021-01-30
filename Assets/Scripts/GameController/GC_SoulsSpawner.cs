@@ -54,12 +54,10 @@ public class GC_SoulsSpawner : MonoBehaviour
             soulPlayer = GameObject.FindObjectOfType<CTRL_Soul>();
         }
 
-        //If the body hasn't been found we look for it in the scene.
-        /*if (bodyPlayer == null)
-        {
-            bodyPlayer = GameObject.FindObjectOfType<CTRL_Body>();
-        }*/
-
+        //We deactivate both final goals so the players can't reach them before time.
+        _finalGoal1.SetActive(false);
+        _finalGoal2.SetActive(false);
+                
         //This coroutine should be trigger by the start game function. But for testing purposes I'm calling it here.
         StartGame();
     }
