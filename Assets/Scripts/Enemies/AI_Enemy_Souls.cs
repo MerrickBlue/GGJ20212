@@ -179,6 +179,8 @@ public class AI_Enemy_Souls : MonoBehaviour
     //Temporal function to know where this character is looking at to check for walls
     protected void OnDrawGizmos()
     {
+        Gizmos.DrawWireSphere(this.transform.position, viewRadius);
+
         Gizmos.color = Color.red;
         Vector3 direction = transform.TransformDirection(_patrolDestination - this.transform.position);
         Gizmos.DrawRay(transform.position, direction);

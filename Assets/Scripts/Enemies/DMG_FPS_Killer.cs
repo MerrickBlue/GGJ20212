@@ -9,6 +9,7 @@ public class DMG_FPS_Killer : MonoBehaviour
     [SerializeField] protected int layerKill = 8;
     [SerializeField] protected bool killing;
 
+
     // Update is called once per frame
     void Update()
     {
@@ -45,7 +46,6 @@ public class DMG_FPS_Killer : MonoBehaviour
             {
                 return;
             }
-
             killing = false;
             Debug.Log("Not killing");
         }

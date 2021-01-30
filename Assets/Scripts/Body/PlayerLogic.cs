@@ -24,14 +24,15 @@ public class PlayerLogic : MonoBehaviour
     private float shotForceParabole;
     private Vector3 velocity;
     private bool isGrounded;
+    public float timeBeforeDeath;
 
     //The ammo counter for this player.
     [SerializeField] private int rockCount = 10;
 
-
     // Update is called once per frame
     void Update()
     {
+
         //Set the parabole shot force to always be half the shot vertical force
         shotForceParabole = shotForce / 2;
 

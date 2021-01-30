@@ -3883,13 +3883,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313792289}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90dc65e2bf318374dae3f8711c593980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   soulEnemies: {fileID: 361790349256394876, guid: 0a8f166dd362bb54190f38d19aa5e10f, type: 3}
-  bodyEnemies: {fileID: 361790349256394876, guid: 0a8f166dd362bb54190f38d19aa5e10f, type: 3}
+  bodyEnemies: {fileID: 361790349256394876, guid: ffd13c50c70500a4c996c89b070ea476, type: 3}
   timeBetweenSpawns: 8
   spawnsEveryCycle: 2
   soulPlayer: {fileID: 1851780233}
@@ -3924,7 +3924,7 @@ GameObject:
   - component: {fileID: 1412029444}
   - component: {fileID: 1412029443}
   - component: {fileID: 1412029442}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Desert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4147,6 +4147,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: fpsKiller
+      value: 
+      objectReference: {fileID: 361790349256394876, guid: 0a8f166dd362bb54190f38d19aa5e10f, type: 3}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
       propertyPath: rockCount
       value: 1000
       objectReference: {fileID: 0}
@@ -4161,6 +4165,18 @@ PrefabInstance:
     - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
       propertyPath: shotForce.y
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: shotForceParabole
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: shotForceVertical
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: lateralMoveShotMultiplier
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5778945220491371069, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
       propertyPath: m_RootOrder
@@ -6623,6 +6639,18 @@ PrefabInstance:
     - target: {fileID: 7737131712180114443, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
       propertyPath: m_Name
       value: SoulPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737131712180114443, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737131712885162510, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8137325407373123157, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9db974866de67b34cb6ab413676cc384, type: 3}

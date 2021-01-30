@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2788600697604693634}
   - component: {fileID: 2788600697604693637}
   - component: {fileID: 2788600697604693636}
+  - component: {fileID: 4726260641301378713}
   m_Layer: 0
   m_Name: RockProjectile
   m_TagString: Untagged
@@ -112,3 +113,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &4726260641301378713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788600697604693638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9b9c055ea41f24da1eaeacc8363296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flyingEnemiesTag: BodyEnemies
