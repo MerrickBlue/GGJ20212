@@ -18,6 +18,8 @@ public class AudioManager : MonoBehaviour
     public AudioMixer SFXMixer;
 
     public AudioSource GenAmbience; //same as music
+    public AudioClip[] UISfxClips;
+    public AudioSource UISfx;
 
     //Singleton
     private static AudioManager _audioManag;
@@ -53,6 +55,22 @@ public class AudioManager : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(sfxClips[clip]);
+        }
+    }
+
+    public void PlayUISFX(int index)
+    {
+        switch(index)
+        {
+            case 0: 
+                UISfx.PlayOneShot(UISfxClips[0]);
+                break;
+            case 1:
+                UISfx.PlayOneShot(UISfxClips[1]);
+                break;
+            case 2:
+                UISfx.PlayOneShot(UISfxClips[2]);
+                break;
         }
     }
 

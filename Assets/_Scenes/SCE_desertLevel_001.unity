@@ -686,6 +686,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 265f99d21de54d64c8a13aa5bfefe6bc, type: 3}
+--- !u!82 &291280165 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6677331288914866836, guid: 265f99d21de54d64c8a13aa5bfefe6bc, type: 3}
+  m_PrefabInstance: {fileID: 291280164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &292636902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5010,6 +5015,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d2cd0c91c02c141a6839cd93b99627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulPlayerHere: 0
+  bodyPlayerHere: 0
 --- !u!136 &1283253715
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5303,6 +5310,9 @@ MonoBehaviour:
   _secondStage: 0
   _finalGoal1: {fileID: 1283253713}
   _finalGoal2: {fileID: 1793906425}
+  NotifASource: {fileID: 291280165}
+  SecondStSFX:
+  - {fileID: 8300000, guid: 0763d3436f0175d4388e75961ef1656f, type: 3}
 --- !u!4 &1313792291
 Transform:
   m_ObjectHideFlags: 0
@@ -6653,6 +6663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d2cd0c91c02c141a6839cd93b99627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soulPlayerHere: 0
+  bodyPlayerHere: 0
 --- !u!136 &1793906427
 CapsuleCollider:
   m_ObjectHideFlags: 0

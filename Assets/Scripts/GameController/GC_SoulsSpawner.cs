@@ -33,6 +33,11 @@ public class GC_SoulsSpawner : MonoBehaviour
     [SerializeField] protected GameObject _finalGoal1;
     [SerializeField] protected GameObject _finalGoal2;
 
+    //Audio
+    [Header("Audio")]
+    public AudioSource NotifASource;
+    public AudioClip[] SecondStSFX;
+
     protected void Awake()
     {
         if (instance == null)
@@ -170,6 +175,10 @@ public class GC_SoulsSpawner : MonoBehaviour
         //When the game starts we need to lock and disable the mouse cursor so the FPS player can have more control over his own camera.
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        //Music Triggering
+        AudioManager.AudioManag.StartMusic();
+        AudioManager.AudioManag.FadeInIntro(1.5f);
+        AudioManager.AudioManag.FadeInGame(1.5f);
         //Finally we start spawning enemies.
         StartCoroutine(SpawnEnemies());
     }
@@ -180,6 +189,8 @@ public class GC_SoulsSpawner : MonoBehaviour
         //Before going into the main menu, there should be a You Lose sign.
         //SceneManager.LoadScene(0, LoadSceneMode.Single);
         Debug.Log("Game Lost");
+        //audio
+        AudioManager.AudioManag.PlayDeathMusic(0.75f);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }    
@@ -187,12 +198,17 @@ public class GC_SoulsSpawner : MonoBehaviour
     public void WinGame()
     {
         Debug.Log("Game Won");
+        //audio
+        AudioManager.AudioManag.PlayWinMusic(0.75f);
     }
 
     protected void EnterSecondStage()
     {
         //First we ste the second stage boollean to true.
         _secondStage = true;
+
+        //Audio
+        AudioManager.AudioManag.PlaySFX(NotifASource, SecondStSFX, 1f, 1f, 1f, 1f, true);
 
         //Now we activate one of the two random final goals
         if (Random.value > 0.5f)
