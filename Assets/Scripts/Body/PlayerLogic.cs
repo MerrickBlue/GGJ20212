@@ -24,8 +24,6 @@ public class PlayerLogic : MonoBehaviour
     private bool isGrounded;
     //The ammo counter for this player.
     [SerializeField] private int rockCount = 10;
-    //Not sure why this is usefull?
-    private Rigidbody rockRB;
 
     // Update is called once per frame
     void Update()
@@ -106,9 +104,8 @@ public class PlayerLogic : MonoBehaviour
                 tempBullet_Handler = Instantiate(rocks, shotPoint.position, Quaternion.identity);
 
                 //Take the rigid body of the temporal instance var and add a shot force to it in the forward game object axis
-                rockRB = tempBullet_Handler.GetComponent<Rigidbody>();
-                rockRB.AddForce(shotForce);
-
+                tempBullet_Handler.GetComponent<Rigidbody>().AddForce(shotForce);
+                
                 //Substract a rock for each time we shoot
                 rockCount -= 1;
             }
