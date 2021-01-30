@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0016398255, g: 0.33083725, b: 0.54247785, a: 1}
+  m_IndirectSpecularColor: {r: 676.90607, g: 59657.062, b: 62250.938, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3883,7 +3883,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313792289}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90dc65e2bf318374dae3f8711c593980, type: 3}
   m_Name: 
@@ -4118,6 +4118,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5778945219342383613, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.001
+      objectReference: {fileID: 0}
     - target: {fileID: 5778945219389038346, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -4141,6 +4145,22 @@ PrefabInstance:
     - target: {fileID: 5778945220491371064, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: rockCount
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: shotForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: shotForce.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5778945220491371067, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
+      propertyPath: shotForce.y
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5778945220491371069, guid: 22c5a10378eeb2b4f9ebd98156f59d40, type: 3}
       propertyPath: m_RootOrder
