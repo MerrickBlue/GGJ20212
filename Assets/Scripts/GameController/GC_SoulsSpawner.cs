@@ -38,6 +38,12 @@ public class GC_SoulsSpawner : MonoBehaviour
     public AudioSource NotifASource;
     public AudioClip[] SecondStSFX;
 
+    //EndGameUI
+    [SerializeField] protected GameObject finishUI;
+    [SerializeField] protected GameObject winLoseText;
+    [SerializeField] protected string winText;
+    [SerializeField] protected string loseText;
+
     protected void Awake()
     {
         if (instance == null)
@@ -193,6 +199,10 @@ public class GC_SoulsSpawner : MonoBehaviour
         AudioManager.AudioManag.PlayDeathMusic(0.75f);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        //Make UI appear
+        winLoseText.GetComponent<TMPro.TextMeshProUGUI>().text = loseText;
+        finishUI.SetActive(true);
     }    
 
     public void WinGame()
@@ -200,6 +210,10 @@ public class GC_SoulsSpawner : MonoBehaviour
         Debug.Log("Game Won");
         //audio
         AudioManager.AudioManag.PlayWinMusic(0.75f);
+
+        //Make UI appear
+        winLoseText.GetComponent<TMPro.TextMeshProUGUI>().text = winText;
+        finishUI.SetActive(true);
     }
 
     protected void EnterSecondStage()
