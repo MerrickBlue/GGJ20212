@@ -29,6 +29,12 @@ public class PlayerLogic : MonoBehaviour
     //The ammo counter for this player.
     [SerializeField] private int rockCount = 10;
 
+    //Audio
+    [Header("Audio")]
+    public AudioSource FPSAudioSource;
+    public AudioClip[] RockRecollectSFX;
+    public AudioClip[] RockThrowSFX;
+
     // Update is called once per frame
     void Update()
     {
@@ -86,6 +92,9 @@ public class PlayerLogic : MonoBehaviour
             //Add a rock to the rock counter
             RockCollector();
 
+            //audio
+            AudioManager.AudioManag.PlaySFX(FPSAudioSource, RockRecollectSFX, 0.8f, 1.2f, 0.8f, 1f, false);
+
             //Destroy parent gameObject when we touch the child trigger
             Destroy(other.transform.parent.gameObject);
         }
@@ -110,6 +119,9 @@ public class PlayerLogic : MonoBehaviour
                 //Instantiate a bullet rock prefab we define in editor inspector and save the instance in a temp variable
                 GameObject tempBullet_Handler;
                 tempBullet_Handler = Instantiate(rocks, shotPoint.position, shotPoint.rotation);
+
+                //audio
+                AudioManager.AudioManag.PlaySFX(FPSAudioSource, RockThrowSFX, 0.7f, 1.3f, 0.8f, 1f, false);
 
                 //Ignore collisions between our player and the bullet collider at the moment we shoot each bullet
                 Physics.IgnoreCollision(tempBullet_Handler.GetComponent<Collider>(), shotPoint.parent.GetComponent<Collider>());
