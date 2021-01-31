@@ -124,7 +124,7 @@ public class GC_SoulsSpawner : MonoBehaviour
         }
         else
         {
-            Instantiate(bodyEnemies, new Vector3(v2.x, soulPlayer.transform.position.y, v2.y), Quaternion.identity);
+            Instantiate(bodyEnemies, new Vector3(v2.x, bodyPlayer.transform.position.y, v2.y), Quaternion.identity);
         }
     }
 
@@ -141,7 +141,7 @@ public class GC_SoulsSpawner : MonoBehaviour
         }
         else
         {
-            Instantiate(soulEnemies, new Vector3(v2.x, bodyPlayer.transform.position.y, v2.y), Quaternion.identity);
+            Instantiate(soulEnemies, new Vector3(v2.x, soulPlayer.transform.position.y, v2.y), Quaternion.identity);
         }
     }
     #endregion
