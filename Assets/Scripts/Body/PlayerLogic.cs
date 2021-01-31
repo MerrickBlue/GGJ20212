@@ -137,8 +137,8 @@ public class PlayerLogic : MonoBehaviour
     void RockShooter()
     {
         //If we have a at least one rock we can shoot
-        if (rockCount > 0)
-        {
+        //if (rockCount > 0)
+        //{
             if (Input.GetButtonDown("Fire1"))
             {
                 //Instantiate a bullet rock prefab we define in editor inspector and save the instance in a temp variable
@@ -182,7 +182,7 @@ public class PlayerLogic : MonoBehaviour
                 
                 //Substract a rock for each time we shoot
                 rockCount -= 1;
-            }
+            //}
         }
     }
 }
