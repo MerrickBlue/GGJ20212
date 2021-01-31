@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TMP_ColorGradientMainMenu_001
   m_EditorClassIdentifier: 
   colorMode: 2
-  topLeft: {r: 1, g: 0.61698115, b: 0.96094716, a: 1}
-  topRight: {r: 1, g: 0.61698115, b: 0.96094716, a: 1}
-  bottomLeft: {r: 1, g: 0.76574916, b: 0.65471697, a: 1}
-  bottomRight: {r: 1, g: 0.76574916, b: 0.65471697, a: 1}
+  topLeft: {r: 0.21568629, g: 0.027450982, b: 0.32156864, a: 1}
+  topRight: {r: 0.21568629, g: 0.027450982, b: 0.32156864, a: 1}
+  bottomLeft: {r: 0.6784314, g: 0.3372549, b: 0.3372549, a: 1}
+  bottomRight: {r: 0.6784314, g: 0.3372549, b: 0.3372549, a: 1}
