@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    private void Start()
+    {
+        AudioManager.AudioManag.StartMusic();
+        AudioManager.AudioManag.FadeInIntro(1.75f);
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("SCE_desertLevel_001");
