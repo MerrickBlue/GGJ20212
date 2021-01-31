@@ -239,7 +239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5778945219342383613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShotPoint
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -254,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5778945219342383610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.711, z: 0.49}
+  m_LocalPosition: {x: 0, y: 1.001, z: 0.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5778945220491371069}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 5778945219389038349}
   - component: {fileID: 5778945219389038351}
   - component: {fileID: 5778945219389038348}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 5778945219883285755}
   - component: {fileID: 5778945219883285756}
   - component: {fileID: 463003656}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FPSCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ MonoBehaviour:
   invertFaceCulling: 0
   probeLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 759
   hasPersistentHistory: 0
   exposureTarget: {fileID: 0}
   m_RenderingPathCustomFrameSettings:
@@ -563,7 +563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5778945220446701631}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -595,9 +595,9 @@ GameObject:
   - component: {fileID: 5778945220491371069}
   - component: {fileID: 5778945220491371066}
   - component: {fileID: 5778945220491371067}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FirstPersonPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -663,10 +663,10 @@ MonoBehaviour:
     m_Bits: 8
   colliderActivatorTimer: 0.1
   rocks: {fileID: 2788600697604693638, guid: 4edeb1dce4b8d3f439132d869fd66c81, type: 3}
-  shotForce: 0
+  shotForce: 20
   shotPoint: {fileID: 5778945219342383613}
   timeBeforeDeath: 0
-  rockCount: 10
+  rockCount: 1000
   FPSAudioSource: {fileID: 126665207400786090}
   RockRecollectSFX:
   - {fileID: 8300000, guid: 56a8a15d785371748a65378c743dc7b9, type: 3}
@@ -730,6 +730,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Astronaut
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4affecb9c820a824f8424603fe6d12bf, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5125e9fb707f29c499f81fb4c0ef78be, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4affecb9c820a824f8424603fe6d12bf, type: 3}
 --- !u!1 &3938828062730289462 stripped

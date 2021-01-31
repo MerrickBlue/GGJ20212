@@ -11,8 +11,16 @@ public class RockBullet : MonoBehaviour
     {
         if (collision.gameObject.tag == flyingEnemiesTag)
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
+            Destroy(collision.gameObject);            
         }
+        if (collision.gameObject.tag != "Player")
+        {
+            Invoke("DestroyMe", 3);
+        }
+    }
+
+    protected void DestroyMe()
+    {
+        Destroy(this.gameObject);
     }
 }
