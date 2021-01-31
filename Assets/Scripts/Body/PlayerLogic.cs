@@ -152,7 +152,7 @@ public class PlayerLogic : MonoBehaviour
                 Physics.IgnoreCollision(tempBullet_Handler.GetComponent<Collider>(), shotPoint.parent.GetComponent<Collider>());
 
                 //I set the velocity of each bullet to 0 at spawn as safe measure to avoid strange behaviour
-                tempBullet_Handler.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                //tempBullet_Handler.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
                 //Store variable shot X and Z power depending on wheter moving forward or not
                 float shotX;
@@ -177,12 +177,11 @@ public class PlayerLogic : MonoBehaviour
                 //Take the rigid body of the temporal instance var and add a shot force to it in the forward game object axis
                 tempBullet_Handler.GetComponent<Rigidbody>().velocity = (new Vector3(shotX, shotForceParabole , shotZ));
 
-                //Destroy te rock bullet after 10 seconds
-                Destroy(tempBullet_Handler, 5);
+                //Destroy te rock bullet after 10 seconds I took care of this from the bullet script.
+                //Destroy(tempBullet_Handler, 5);
                 
                 //Substract a rock for each time we shoot
-                rockCount -= 1;
-            //}
+                rockCount -= 1;            
         }
     }
 }

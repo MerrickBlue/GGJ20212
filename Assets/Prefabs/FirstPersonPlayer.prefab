@@ -254,7 +254,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5778945219342383610}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.001, z: 0.49}
+  m_LocalPosition: {x: 0, y: 0.614, z: 0.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5778945220491371069}
@@ -394,7 +394,7 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.5
     y: 0
     width: 0.5
     height: 1
@@ -662,8 +662,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   colliderActivatorTimer: 0.1
-  rocks: {fileID: 2788600697604693638, guid: 4edeb1dce4b8d3f439132d869fd66c81, type: 3}
-  shotForce: 20
+  rocks: {fileID: 7332812148524369911, guid: 8aa8ccb43270b3c4aa85d32169c052a3, type: 3}
+  shotForce: 10
   shotPoint: {fileID: 5778945219342383613}
   timeBeforeDeath: 0
   rockCount: 1000
