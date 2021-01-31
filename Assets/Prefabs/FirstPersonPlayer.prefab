@@ -424,6 +424,7 @@ MonoBehaviour:
   controller: {fileID: 5778945220491371066}
   speed: 10
   jumpHeight: 3
+  _animator: {fileID: 7710860996917363190}
   gravityForce: -9.18
   groundCheck: {fileID: 5778945220446701631}
   groundDistance: 0.4
@@ -504,5 +505,10 @@ PrefabInstance:
 --- !u!4 &4459223258831608716 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4affecb9c820a824f8424603fe6d12bf, type: 3}
+  m_PrefabInstance: {fileID: 4208876158087609447}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7710860996917363190 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4affecb9c820a824f8424603fe6d12bf, type: 3}
   m_PrefabInstance: {fileID: 4208876158087609447}
   m_PrefabAsset: {fileID: 0}

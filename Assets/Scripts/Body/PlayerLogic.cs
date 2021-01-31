@@ -9,6 +9,12 @@ public class PlayerLogic : MonoBehaviour
     public float speed = 10f;
     public float jumpHeight = 3f;
 
+    [Space(10)]
+
+    [SerializeField] protected Animator _animator;
+
+    [Space(10)]
+
     [Header("Gravity Settings")]
     public float gravityForce = -9.18f;
     public Transform groundCheck;
@@ -16,18 +22,26 @@ public class PlayerLogic : MonoBehaviour
     public LayerMask groundMask;
     public float colliderActivatorTimer = 0.1f;
 
+    [Space(10)]
+
     [Header("Projectile Settings")]
     public GameObject rocks;
     public float shotForce; 
     public Transform shotPoint;
+
+    [Space(10)]
 
     private float shotForceParabole;
     private Vector3 velocity;
     private bool isGrounded;
     public float timeBeforeDeath;
 
+    [Space(10)]
+
     //The ammo counter for this player.
     [SerializeField] private int rockCount = 10;
+
+    [Space(10)]
 
     //Audio
     [Header("Audio")]
@@ -63,6 +77,17 @@ public class PlayerLogic : MonoBehaviour
 
         velocity.y += gravityForce * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+
+        #region this region will hold the command so the Animator knows when the player is moving and when it's not
+        if (xAxis != 0 || zAxis != 0)
+        {
+            _animator.SetBool("Walking", true);
+        }
+        else
+        {
+            _animator.SetBool("Walking", false);
+        }
+        #endregion
     }
 
     void Gravity()
