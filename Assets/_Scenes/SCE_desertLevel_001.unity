@@ -5300,7 +5300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulEnemies: {fileID: 361790349256394876, guid: 0a8f166dd362bb54190f38d19aa5e10f, type: 3}
-  bodyEnemies: {fileID: 361790349256394876, guid: ffd13c50c70500a4c996c89b070ea476, type: 3}
+  bodyEnemies: {fileID: 361790349256394876, guid: 0a8f166dd362bb54190f38d19aa5e10f, type: 3}
   timeBetweenSpawns: 8
   spawnsEveryCycle: 2
   soulPlayer: {fileID: 1851780233}
@@ -8361,6 +8361,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5863076431916064618, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863076431916064618, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863076431916064618, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863076431916064618, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863076431916064618, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7737131712180114437, guid: 9db974866de67b34cb6ab413676cc384, type: 3}
       propertyPath: m_Constraints
       value: 116
