@@ -34,6 +34,9 @@ public class AI_Enemy_Body : MonoBehaviour
     //The real movement when attacking and patrolling, that way the character doesn't go to full speed in a frame.
     protected float movingSpeed = 0;
 
+    //This variable holds the animator so we can give it the command to play the walking speed.
+    [SerializeField] protected Animator _animator;
+
     #region AI Patrol variables
 
     [SerializeField] protected float distanceToTargetThreshold;
@@ -88,6 +91,16 @@ public class AI_Enemy_Body : MonoBehaviour
         #endregion
 
         BodyAI_Sight();
+
+        //If the real speed of this character is other than 0, then we make it play the walk animation.
+        if (movingSpeed != 0)
+        {
+            _animator.SetBool("Walking", true);
+        }
+        else
+        {
+            _animator.SetBool("Walking", false);
+        }
     }
 
     void BodyAI_Sight()
