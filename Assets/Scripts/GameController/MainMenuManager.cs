@@ -15,6 +15,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene("SCE_desertLevel_001");
     }
 
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("SCE_MainMenu");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Quit Game");
