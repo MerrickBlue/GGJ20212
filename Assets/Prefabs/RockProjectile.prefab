@@ -126,3 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flyingEnemiesTag: BodyEnemies
+  EBodyDestSFX:
+  - {fileID: 8300000, guid: 3ba732a15f825604f9bbf7dfa2e6486f, type: 3}
+  - {fileID: 8300000, guid: 1072dcacf54e8f444a1eb7d4a830b7d0, type: 3}
+  - {fileID: 8300000, guid: ae73ccbbe821557419507c0fba831804, type: 3}

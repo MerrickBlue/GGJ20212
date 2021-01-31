@@ -6,12 +6,16 @@ public class RockBullet : MonoBehaviour
 {
     [Header("This defines which enemies can be damaged with the rock bullet")]
     [SerializeField] protected string flyingEnemiesTag;
+    [Header("Audio")]
+    public AudioClip[] EBodyDestSFX;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == flyingEnemiesTag)
         {
-            Destroy(collision.gameObject);            
+            Destroy(collision.gameObject);
+            //audio
+            AudioManager.AudioManag.PlaySFX(AudioManager.AudioManag.UISfx, EBodyDestSFX, 0.8f, 1.1f, 1f, 1f, false);
         }
         if (collision.gameObject.tag != "Player")
         {
