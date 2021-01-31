@@ -9,6 +9,11 @@ public class DMG_FPS_Killer : MonoBehaviour
     [SerializeField] protected int layerKill = 8;
     [SerializeField] protected bool killing;
 
+    //Audio
+    public AudioSource NotifASource;
+    public AudioClip[] DamagingPlayerSFX;
+    public AudioClip[] PlayerDeathSFX;
+
 
     // Update is called once per frame
     void Update()
@@ -25,6 +30,8 @@ public class DMG_FPS_Killer : MonoBehaviour
         else
         {
             GC_SoulsSpawner.instance.LoseGame();
+            //Audio
+            AudioManager.AudioManag.PlaySFX(AudioManager.AudioManag.UISfx, DamagingPlayerSFX, -0.8f, 1.2f, 1f, 1f, true);
         }
     }
 
@@ -34,6 +41,8 @@ public class DMG_FPS_Killer : MonoBehaviour
         {
             killing = true;
             killTimer = timeBeforeKill;
+            //Audio
+            AudioManager.AudioManag.PlaySFX(NotifASource, DamagingPlayerSFX, -0.8f, 1.2f, 1f, 1f, false);
             Debug.Log("Killing");
         }
     }
