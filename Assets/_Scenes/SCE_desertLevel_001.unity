@@ -5300,7 +5300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulEnemies: {fileID: 361790349256394876, guid: 0a8f166dd362bb54190f38d19aa5e10f, type: 3}
-  bodyEnemies: {fileID: 361790349256394876, guid: 0a8f166dd362bb54190f38d19aa5e10f, type: 3}
+  bodyEnemies: {fileID: 3007495743905846921, guid: d4a2124b85732b34d86e15fc871ceb36, type: 3}
   timeBetweenSpawns: 8
   spawnsEveryCycle: 2
   soulPlayer: {fileID: 1851780233}
